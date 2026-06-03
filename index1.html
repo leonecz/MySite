@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Алексей Леонов | Из буровой в техлиды</title>
+    <!-- Шрифты Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        :focus-visible {
+            outline: 3px solid #2563eb;
+            outline-offset: 4px;
+            border-radius: 8px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* секции */
+        section {
+            padding: 80px 0;
+            scroll-margin-top: 80px;
+        }
+
+        /* типографика */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0f2b3d, #1e5a7a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0c4a6e;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #2563eb;
+            border-radius: 4px;
+        }
+        .section-sub {
+            color: #334155;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            max-width: 700px;
+        }
+
+        /* навигация */
+        .sticky-nav {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            padding: 10px 24px;
+            border-radius: 60px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(37,99,235,0.2);
+        }
+        .nav-link {
+            font-weight: 600;
+            text-decoration: none;
+            color: #1e293b;
+            padding: 8px 20px;
+            border-radius: 40px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+
+        /* кнопки */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #1e5a7a;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.25s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: #2563eb;
+            box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #2563eb;
+            color: #2563eb;
+        }
+
+        /* герой */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(125deg, #ffffff 0%, #eef2ff 100%);
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .hero-content {
+            flex: 1.2;
+        }
+        .hero-badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #334155;
+            margin: 24px 0;
+            max-width: 550px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 20px;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0c4a6e;
+        }
+        .hero-image {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+        .avatar {
+            background: linear-gradient(135deg, #c7d2fe, #bfdbfe);
+            width: 300px;
+            height: 300px;
+            border-radius: 42% 58% 36% 64% / 58% 42% 58% 42%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.2);
+        }
+        .avatar i {
+            font-size: 7rem;
+            color: #1e3a8a;
+        }
+
+        /* путь таймлайн */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+        .timeline-item {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            background: white;
+            border-radius: 28px;
+            padding: 24px 28px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+        }
+        .timeline-year {
+            font-weight: 800;
+            font-size: 1.4rem;
+            min-width: 110px;
+            color: #2563eb;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+        }
+        .skill-card {
+            background: white;
+            padding: 28px;
+            border-radius: 28px;
+            border: 1px solid #e2e8f0;
+            transition: 0.2s;
+        }
+        .skill-card i {
+            font-size: 2.2rem;
+            color: #2563eb;
+            margin-bottom: 18px;
+        }
+        .quote-block {
+            background: linear-gradient(115deg, #0f2b3d, #1e5a7a);
+            color: white;
+            text-align: center;
+            border-radius: 48px;
+            padding: 60px 30px;
+            margin: 40px 0;
+        }
+        .interests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+        .interest-card {
+            background: white;
+            border-radius: 28px;
+            padding: 28px 20px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: white;
+            border-radius: 48px;
+            padding: 44px;
+            border: 1px solid #e2e8f0;
+        }
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 32px 0;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.4rem; }
+            .hero-grid { flex-direction: column-reverse; text-align: center; }
+            .hero-stats { justify-content: center; }
+            .timeline-item { flex-direction: column; }
+            .contact-flex { padding: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="sticky-nav">
+    <div class="nav-links">
+        <a href="#home" class="nav-link">🏠 Главная</a>
+        <a href="#journey" class="nav-link">⛽ Путь</a>
+        <a href="#skills" class="nav-link">💻 Компетенции</a>
+        <a href="#blog" class="nav-link">🎙️ Блог</a>
+        <a href="#contacts" class="nav-link">📬 Контакты</a>
+    </div>
+</div>
+
+<main>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge"><i class="fas fa-code"></i> Из буровой — в техлиды</div>
+                    <h1>Алексей Леонов</h1>
+                    <p>Техлид / Automation QA Engineer. Преподаватель. Блогер. Прошёл путь от помощника бурильщика до управления IT-командами. Верю, что никогда не поздно сменить профессию.</p>
+                    <div class="hero-stats">
+                        <div><span class="stat-number">10+</span><br>лет в нефтянке</div>
+                        <div><span class="stat-number">5+</span><br>лет в IT</div>
+                        <div><span class="stat-number">2026</span><br>Техлид</div>
+                    </div>
+                    <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="#contacts" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Связаться</a>
+                        <a href="#journey" class="btn btn-outline"><i class="fas fa-road"></i> История успеха</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПУТЬ: ИЗ НЕФТЯНКИ В IT -->
+    <section id="journey" style="background-color: #f8fafc;">
+        <div class="container">
+            <h2>Путь сквозь пласты</h2>
+            <div class="section-sub">От Нефтеюганска и буровых вышек — до Java, QA и управления командами</div>
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-year">2010-е</div><div><h3>Нефтеюганский колледж, бурение</h3><p>Пошёл по стопам отца, получил специальность "бурение нефтяных и газовых скважин". Начал карьеру помощником бурильщика.</p></div></div>
+                <div class="timeline-item"><div class="timeline-year">2015 → 2020</div><div><h3>Рост в нефтянке</h3><p>Прошёл путь до заместителя начальника службы буровых работ. Глубокое понимание тяжелой промышленности, дисциплины и ответственности.</p></div></div>
+                <div class="timeline-item"><div class="timeline-year">2020 — перелом</div><div><h3>Пандемия и смена вектора</h3><p>Решение кардинально сменить профессию. Начал изучать Java, читать IT-литературу, поступил в онлайн-университет и прошёл отбор в Школу 21 от Сбера.</p></div></div>
+                <div class="timeline-item"><div class="timeline-year">2022</div><div><h3>Первая работа в IT</h3><p>Устроился Automation QA Engineer. Совмещал с преподаванием в колледже — чтобы глубже понять код, начал учить студентов.</p></div></div>
+                <div class="timeline-item"><div class="timeline-year">Январь 2026 — н.в.</div><div><h3>Техлид</h3><p>Дорос до технического лида. Управляю командой, проектирую процессы автоматизации. В планах — переход в менеджмент.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КОМПЕТЕНЦИИ И ИНСТРУМЕНТЫ -->
+    <section id="skills">
+        <div class="container">
+            <h2>Технологический стек</h2>
+            <div class="section-sub">За плечами Java, автоматизация, CI/CD и обучение других</div>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fab fa-java"></i><h3>Java & Automation</h3><p>Разработка автотестов, фреймворки (TestNG, JUnit), Selenium, Rest Assured.</p></div>
+                <div class="skill-card"><i class="fas fa-chalkboard-user"></i><h3>Преподавание</h3><p>Веду занятия в колледже по программированию. Верю: объясняя — укрепляешь знания.</p></div>
+                <div class="skill-card"><i class="fas fa-users"></i><h3>Техлид & менторство</h3><p>Управление QA-командой, code review, наставничество, внедрение лучших практик.</p></div>
+                <div class="skill-card"><i class="fas fa-school"></i><h3>Школа 21 & Сбер</h3><p>Прошёл интенсивное обучение, методология peer-to-peer, углублённый алгоритмический трек.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОГ / ВДОХНОВЕНИЕ -->
+    <section id="blog" style="background-color: #f1f5f9;">
+        <div class="container">
+            <h2>Делюсь опытом в блоге</h2>
+            <div class="section-sub">Конференции, IT-мероприятия, инсайты и лайфхаки для перехода в разработку</div>
+            <div class="interests">
+                <div class="interest-card"><i class="fas fa-microphone-alt fa-2x" style="color:#2563eb;"></i><h3>Выступления</h3><p>Рассказываю о переходе из нефтянки в IT на митапах и конференциях.</p></div>
+                <div class="interest-card"><i class="fas fa-video fa-2x" style="color:#2563eb;"></i><h3>YouTube / Telegram</h3><p>Обзоры технологий, карьерные советы, разбор резюме для джуниоров.</p></div>
+                <div class="interest-card"><i class="fas fa-chalkboard fa-2x" style="color:#2563eb;"></i><h3>Менторство</h3><p>Помогаю начинающим инженерам сделать первый шаг в автоматизацию.</p></div>
+                <div class="interest-card"><i class="fas fa-newspaper fa-2x" style="color:#2563eb;"></i><h3>Статьи на Habr</h3><p>Пишу о нефтянке, IT-трансформации и QA best practices.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЦИТАТА -->
+    <div class="container">
+        <div class="quote-block">
+            <div class="quote-text" style="font-size: 1.6rem; font-style: italic;">«Когда объясняешь материал другим — начинаешь понимать его по-настоящему. Мой путь доказал: возраст и прошлая профессия — не приговор»</div>
+            <div style="margin-top: 20px;">— Алексей Леонов, техлид и преподаватель</div>
+        </div>
+    </div>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contacts">
+        <div class="container">
+            <h2>Присоединяйтесь к путешествию</h2>
+            <div class="section-sub">Хотите обсудить менторство, коллаборацию или просто поболтать об IT? Напишите!</div>
+            <div class="contact-flex">
+                <div class="contact-info" style="flex:1">
+                    <h3>Контакты</h3>
+                    <div class="contact-detail" style="display: flex; gap: 16px; margin: 24px 0;"><i class="fab fa-vk"></i> <span>vk.com/leonecz</span></div>
+                    <div class="contact-detail"><i class="fab fa-telegram"></i> <span>@alexey_leonov</span></div>
+                    <div class="contact-detail"><i class="fas fa-envelope"></i> <span>alexey.leonov@itpath.ru</span></div>
+                    <div class="social-links" style="display: flex; gap: 18px; margin-top: 28px;">
+                        <a href="#" style="background:#eef2ff; width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:60px;"><i class="fab fa-github"></i></a>
+                        <a href="#" style="background:#eef2ff; width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:60px;"><i class="fab fa-youtube"></i></a>
+                        <a href="#" style="background:#eef2ff; width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:60px;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div style="flex:1">
+                    <h3>Напишите мне</h3>
+                    <form id="contactForm">
+                        <div style="margin-bottom:16px"><input type="text" placeholder="Ваше имя" id="name" style="width:100%; padding:14px; border-radius:60px; border:1px solid #cbd5e1;"></div>
+                        <div style="margin-bottom:16px"><input type="email" placeholder="Email" id="email" style="width:100%; padding:14px; border-radius:60px; border:1px solid #cbd5e1;"></div>
+                        <div style="margin-bottom:16px"><textarea rows="3" placeholder="Сообщение" id="msg" style="width:100%; padding:14px; border-radius:28px; border:1px solid #cbd5e1;"></textarea></div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Отправить</button>
+                        <p id="formFeedback" style="margin-top:12px; font-size:0.8rem;"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Алексей Леонов — Из буровой в техлиды. Нефтеюганск — Москва — онлайн</p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">Сайт создан на основе реальной истории перехода в IT. Каждый может изменить свою жизнь.</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name')?.value.trim();
+        const email = document.getElementById('email')?.value.trim();
+        const msg = document.getElementById('msg')?.value.trim();
+        const feedback = document.getElementById('formFeedback');
+        if (!name || !email || !msg) {
+            feedback.innerHTML = '❌ Заполните все поля';
+            feedback.style.color = '#b91c1c';
+        } else if (!email.includes('@')) {
+            feedback.innerHTML = '❌ Введите корректный email';
+        } else {
+            feedback.innerHTML = '✅ Спасибо! Алексей свяжется с вами.';
+            feedback.style.color = '#166534';
+            this.reset();
+        }
+        setTimeout(() => feedback.innerHTML = '', 3000);
+    });
+    // плавный скролл
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
