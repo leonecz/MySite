@@ -1,451 +1,690 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Алексей Леонов | Из буровой в техлиды</title>
-    <!-- Шрифты Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Алексей Леонов · IT-визитка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
-            scroll-behavior: smooth;
-            line-height: 1.5;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f7fc;
+      color: #1e293b;
+      line-height: 1.5;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        :focus-visible {
-            outline: 3px solid #2563eb;
-            outline-offset: 4px;
-            border-radius: 8px;
-        }
+    .card {
+      max-width: 1200px;
+      width: 100%;
+      background: white;
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      padding: 2rem 2.5rem 2.5rem;
+      transition: all 0.2s;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      border-bottom: 1px solid #e9eef3;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
 
-        /* секции */
-        section {
-            padding: 80px 0;
-            scroll-margin-top: 80px;
-        }
+    .photo-frame {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #dfe7ef;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid white;
+      outline: 1px solid #d0d9e3;
+    }
 
-        /* типографика */
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #0f2b3d, #1e5a7a);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            line-height: 1.2;
-        }
-        h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0c4a6e;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: #2563eb;
-            border-radius: 4px;
-        }
-        .section-sub {
-            color: #334155;
-            margin-bottom: 2.5rem;
-            font-size: 1.1rem;
-            max-width: 700px;
-        }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-        /* навигация */
-        .sticky-nav {
-            position: sticky;
-            top: 20px;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
-            padding: 10px 24px;
-            border-radius: 60px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border: 1px solid rgba(37,99,235,0.2);
-        }
-        .nav-link {
-            font-weight: 600;
-            text-decoration: none;
-            color: #1e293b;
-            padding: 8px 20px;
-            border-radius: 40px;
-            transition: 0.2s;
-            font-size: 0.95rem;
-        }
-        .nav-link:hover {
-            background: #eef2ff;
-            color: #2563eb;
-        }
+    .photo-placeholder {
+      color: #6f7f92;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 0.5rem;
+      background: #eef3f8;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+    }
 
-        /* кнопки */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #1e5a7a;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.25s;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-primary {
-            background: #2563eb;
-            box-shadow: 0 4px 10px rgba(37,99,235,0.3);
-        }
-        .btn-primary:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #2563eb;
-            color: #2563eb;
-        }
+    .header-title {
+      flex: 1;
+    }
 
-        /* герой */
-        .hero {
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(125deg, #ffffff 0%, #eef2ff 100%);
-        }
-        .hero-grid {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-        }
-        .hero-content {
-            flex: 1.2;
-        }
-        .hero-badge {
-            background: #dbeafe;
-            color: #1e40af;
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-        .hero-content p {
-            font-size: 1.15rem;
-            color: #334155;
-            margin: 24px 0;
-            max-width: 550px;
-        }
-        .hero-stats {
-            display: flex;
-            gap: 32px;
-            margin-top: 20px;
-        }
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #0c4a6e;
-        }
-        .hero-image {
-            flex: 0.8;
-            display: flex;
-            justify-content: center;
-        }
-        .avatar {
-            background: linear-gradient(135deg, #c7d2fe, #bfdbfe);
-            width: 300px;
-            height: 300px;
-            border-radius: 42% 58% 36% 64% / 58% 42% 58% 42%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.2);
-        }
-        .avatar i {
-            font-size: 7rem;
-            color: #1e3a8a;
-        }
+    .header-title h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0b1e2e;
+    }
 
-        /* путь таймлайн */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
-        .timeline-item {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            background: white;
-            border-radius: 28px;
-            padding: 24px 28px;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
-            border: 1px solid #e2e8f0;
-        }
-        .timeline-year {
-            font-weight: 800;
-            font-size: 1.4rem;
-            min-width: 110px;
-            color: #2563eb;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 28px;
-        }
-        .skill-card {
-            background: white;
-            padding: 28px;
-            border-radius: 28px;
-            border: 1px solid #e2e8f0;
-            transition: 0.2s;
-        }
-        .skill-card i {
-            font-size: 2.2rem;
-            color: #2563eb;
-            margin-bottom: 18px;
-        }
-        .quote-block {
-            background: linear-gradient(115deg, #0f2b3d, #1e5a7a);
-            color: white;
-            text-align: center;
-            border-radius: 48px;
-            padding: 60px 30px;
-            margin: 40px 0;
-        }
-        .interests {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-        }
-        .interest-card {
-            background: white;
-            border-radius: 28px;
-            padding: 28px 20px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
-        .contact-flex {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            background: white;
-            border-radius: 48px;
-            padding: 44px;
-            border: 1px solid #e2e8f0;
-        }
-        footer {
-            background: #0f172a;
-            color: #94a3b8;
-            text-align: center;
-            padding: 32px 0;
-            margin-top: 40px;
-        }
-        @media (max-width: 768px) {
-            h1 { font-size: 2.4rem; }
-            .hero-grid { flex-direction: column-reverse; text-align: center; }
-            .hero-stats { justify-content: center; }
-            .timeline-item { flex-direction: column; }
-            .contact-flex { padding: 28px; }
-        }
-    </style>
+    .header-title .badge {
+      display: inline-block;
+      background: #eef3f8;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1f3a57;
+      margin-top: 0.25rem;
+    }
+
+    .header-title .sub {
+      margin-top: 0.4rem;
+      color: #3d5a78;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .header-title .sub i {
+      margin-right: 0.4rem;
+      color: #2a6b9c;
+      width: 1.2rem;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 2.2rem;
+      border-bottom: 1px solid #e2e9f1;
+      padding-bottom: 0.5rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #4a637e;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tab-btn i {
+      font-size: 1.1rem;
+      color: #5f7d9b;
+    }
+
+    .tab-btn:hover {
+      background: #eef4fa;
+      color: #1f3a57;
+    }
+
+    .tab-btn.active {
+      background: #1f3a57;
+      color: white;
+      box-shadow: 0 4px 10px rgba(26, 67, 113, 0.2);
+    }
+
+    .tab-btn.active i {
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeUp 0.25s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(8px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 2rem;
+    }
+
+    .greeting h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b1e2e;
+      margin-bottom: 1rem;
+    }
+
+    .greeting p {
+      margin-bottom: 1rem;
+      color: #1f3a57;
+      font-size: 1rem;
+    }
+
+    .greeting .highlight {
+      background: #ebf3fa;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-weight: 500;
+      color: #145388;
+    }
+
+    .info-grid {
+      background: #f9fbfd;
+      border-radius: 1.8rem;
+      padding: 1.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px solid #e6eef7;
+      padding-bottom: 0.8rem;
+    }
+
+    .info-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .info-item i {
+      width: 2rem;
+      font-size: 1.2rem;
+      color: #1f5a8e;
+    }
+
+    .info-item strong {
+      font-weight: 600;
+      color: #0b1e2e;
+      min-width: 100px;
+    }
+
+    .info-item span {
+      color: #1f3a57;
+    }
+
+    .hobby-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .hobby-tag {
+      background: white;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1f3a57;
+      border: 1px solid #d8e3ef;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      padding: 0.25rem 0;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      border-left: 3px solid #cbdae8;
+      padding-left: 1.8rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: #1f3a57;
+      border-radius: 50%;
+      position: absolute;
+      left: -7.5px;
+      top: 4px;
+      border: 2px solid white;
+      box-shadow: 0 0 0 3px #1f3a57;
+    }
+
+    .timeline-year {
+      font-weight: 700;
+      color: #0b1e2e;
+      min-width: 70px;
+      font-size: 1rem;
+    }
+
+    .timeline-desc {
+      color: #1f3a57;
+    }
+
+    .timeline-desc strong {
+      color: #0b1e2e;
+      font-weight: 600;
+    }
+
+    .timeline-desc .meta {
+      display: block;
+      font-size: 0.85rem;
+      color: #4a6a89;
+      margin-top: 0.2rem;
+    }
+
+    .skill-section {
+      margin-bottom: 2.2rem;
+    }
+
+    .skill-section h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: #0b1e2e;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-section h3 i {
+      color: #1f5a8e;
+      font-size: 1.1rem;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.8rem;
+    }
+
+    .skill-pill {
+      background: #edf3fa;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1f3a57;
+      border: 1px solid #dae4ef;
+    }
+
+    .skill-pill.highlight {
+      background: #1f3a57;
+      color: white;
+      border-color: #1f3a57;
+    }
+
+    .ai-block {
+      background: #e9f2fa;
+      border-radius: 1.5rem;
+      padding: 1.5rem 2rem;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border: 1px solid #cbdae8;
+    }
+
+    .ai-block i {
+      font-size: 2rem;
+      color: #145388;
+    }
+
+    .ai-block span {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .blog-grid, .contact-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 600px;
+    }
+
+    .blog-item, .contact-item {
+      background: #f9fbfd;
+      border-radius: 1.2rem;
+      padding: 0.9rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border: 1px solid #e6eef7;
+      transition: 0.15s;
+      text-decoration: none;
+      color: #0b1e2e;
+      font-weight: 500;
+    }
+
+    .blog-item:hover, .contact-item:hover {
+      background: #eef4fa;
+      border-color: #b8cde0;
+    }
+
+    .blog-item i, .contact-item i {
+      width: 2rem;
+      font-size: 1.4rem;
+      color: #1f5a8e;
+      text-align: center;
+    }
+
+    .contact-item .label {
+      color: #4a6a89;
+      font-weight: 400;
+      margin-right: 0.3rem;
+    }
+
+    .inline-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .inline-links a {
+      color: #1f5a8e;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #b8cde0;
+    }
+
+    .inline-links a:hover {
+      border-bottom: 2px solid #1f3a57;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e9f1;
+      margin: 2rem 0 1.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .card { padding: 1.5rem; }
+      .header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .header-title h1 { font-size: 1.8rem; }
+      .tabs { gap: 0.2rem; }
+      .tab-btn { padding: 0.4rem 1rem; font-size: 0.9rem; }
+      .info-item { flex-wrap: wrap; gap: 0.25rem; }
+      .info-item strong { min-width: 80px; }
+      .photo-frame { width: 90px; height: 90px; }
+    }
+
+    @media (max-width: 480px) {
+      .tab-btn span { display: none; }
+      .tab-btn i { margin: 0; }
+      .tab-btn { padding: 0.5rem 0.9rem; }
+    }
+  </style>
 </head>
 <body>
+<div class="card">
 
-<div class="sticky-nav">
-    <div class="nav-links">
-        <a href="#home" class="nav-link">🏠 Главная</a>
-        <a href="#journey" class="nav-link">⛽ Путь</a>
-        <a href="#skills" class="nav-link">💻 Компетенции</a>
-        <a href="#blog" class="nav-link">🎙️ Блог</a>
-        <a href="#contacts" class="nav-link">📬 Контакты</a>
+  <!-- ========== ШАПКА ========== -->
+  <div class="header">
+    <div class="photo-frame">
+      <img src="media/image1.jpeg" alt="Фото Алексея Леонова" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="photo-placeholder" style="display:none;"><i class="fas fa-user" style="font-size: 2.8rem; opacity: 0.3;"></i></div>
     </div>
+    <div class="header-title">
+      <h1>Алексей Леонов</h1>
+      <div class="badge"><i class="fas fa-bolt" style="margin-right: 0.3rem;"></i>QA Tech Lead · Альфа-Банк</div>
+      <div class="sub">
+        <span><i class="fas fa-calendar-alt"></i>31 год · 19.08.1994</span>
+        <span><i class="fas fa-map-pin"></i>Нефтеюганск · готов к переезду</span>
+        <span><i class="fas fa-phone"></i>+7 (982) 510-26-74</span>
+        <span><i class="fas fa-envelope"></i>leonovae@internet.ru</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== НАВИГАЦИЯ ========== -->
+  <div class="tabs" id="tabsContainer">
+    <button class="tab-btn active" data-tab="home"><i class="fas fa-home"></i> <span>Главная</span></button>
+    <button class="tab-btn" data-tab="path"><i class="fas fa-road"></i> <span>Путь</span></button>
+    <button class="tab-btn" data-tab="skills"><i class="fas fa-code"></i> <span>Компетенции</span></button>
+    <button class="tab-btn" data-tab="blogs"><i class="fas fa-pen-fancy"></i> <span>Блоги</span></button>
+    <button class="tab-btn" data-tab="contacts"><i class="fas fa-address-card"></i> <span>Контакты</span></button>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ========== ВКЛАДКА: ГЛАВНАЯ ========== -->
+  <div class="tab-content active" id="tab-home">
+    <div class="grid-2">
+      <div class="greeting">
+        <h2>Привет, я Алексей 👋</h2>
+        <p>
+          Родился в Нефтеюганске, прошёл путь от помощника бурильщика до 
+          <span class="highlight">заместителя начальника службы буровых работ</span>, 
+          а в 2020 году решил круто изменить жизнь и ушёл в IT.
+        </p>
+        <p>
+          Сейчас я <strong>QA Tech Lead</strong> в Альфа-Банке, управляю процессами тестирования, 
+          пишу автотесты на Java, провожу собеседования и развиваю команду.
+        </p>
+        <p>
+          В свободное время преподаю студентам, веду блоги о тестировании и IT, 
+          а ещё я <strong>КМС по ММА</strong>, люблю игры, природу и долгие прогулки.
+        </p>
+        <div style="margin-top: 1.2rem;">
+          <span class="hobby-tag"><i class="fas fa-fist-raised" style="margin-right: 0.3rem;"></i>ММА · КМС</span>
+          <span class="hobby-tag"><i class="fas fa-gamepad"></i> Игры</span>
+          <span class="hobby-tag"><i class="fas fa-tree"></i> Природа</span>
+          <span class="hobby-tag"><i class="fas fa-hiking"></i> Прогулки</span>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-item"><i class="fas fa-user-tie"></i><strong>Должность:</strong><span>QA Tech Lead</span></div>
+        <div class="info-item"><i class="fas fa-briefcase"></i><strong>Опыт:</strong><span>11 лет 11 месяцев (в IT — с 2022)</span></div>
+        <div class="info-item"><i class="fas fa-graduation-cap"></i><strong>Образование:</strong><span>ТюмГНГУ + GeekBrains</span></div>
+        <div class="info-item"><i class="fas fa-language"></i><strong>Языки:</strong><span>Русский — родной, Английский — A2</span></div>
+        <div class="info-item"><i class="fas fa-car"></i><strong>Авто:</strong><span>есть, права A, B</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ВКЛАДКА: ПУТЬ ========== -->
+  <div class="tab-content" id="tab-path">
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2026 — н.в.</div>
+        <div class="timeline-desc">
+          <strong>QA Tech Lead</strong> · Альфа-Банк
+          <span class="meta">Управление QA-процессами, развитие команды, стратегия тестирования.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023–2025</div>
+        <div class="timeline-desc">
+          <strong>Главный специалист по тестированию</strong> · Альфа-Банк
+          <span class="meta">Full stack тестирование, автоматизация, взаимодействие с разработкой.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2022–2023</div>
+        <div class="timeline-desc">
+          <strong>Auto QA Engineer</strong> · ООО Перфоманс Лаб (Сургут)
+          <span class="meta">Настройка тестирования с нуля для проектов Сбербанка. Java, Jira, CI, Allure.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2014–2022</div>
+        <div class="timeline-desc">
+          <strong>Заместитель начальника службы буровых работ</strong> · НФ АО «ССК»
+          <span class="meta">Прошёл путь от помощника бурильщика до замначальника. Управление проектами, планирование, контроль, взаимодействие с заказчиками. Премия «Лучший работник в бурении-2022».</span>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.95rem; color: #1f3a57;">
+      <span><i class="fas fa-certificate" style="color:#1f5a8e;"></i> Курс «Руководитель среднего звена» — Русская школа управления, 2022</span>
+      <span><i class="fas fa-certificate" style="color:#1f5a8e;"></i> «QA Lead» — Яндекс Практикум, 2026</span>
+    </div>
+  </div>
+
+  <!-- ========== ВКЛАДКА: КОМПЕТЕНЦИИ ========== -->
+  <div class="tab-content" id="tab-skills">
+    <div class="skill-section">
+      <h3><i class="fas fa-tools"></i> Технические навыки</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">Atlassian Jira</span>
+        <span class="skill-pill">Java</span>
+        <span class="skill-pill">Postman</span>
+        <span class="skill-pill">Jenkins</span>
+        <span class="skill-pill">UI / QA</span>
+        <span class="skill-pill">Linux</span>
+        <span class="skill-pill">PostgreSQL</span>
+        <span class="skill-pill">MS Excel</span>
+        <span class="skill-pill">Spring</span>
+        <span class="skill-pill">Hibernate</span>
+        <span class="skill-pill">Maven</span>
+        <span class="skill-pill">JUnit</span>
+        <span class="skill-pill">Allure</span>
+      </div>
+    </div>
+
+    <div class="skill-section">
+      <h3><i class="fas fa-users"></i> Управление и мягкие навыки</h3>
+      <div class="skill-pills">
+        <span class="skill-pill">Управление командой</span>
+        <span class="skill-pill">Телефонные переговоры</span>
+        <span class="skill-pill">Навыки презентации</span>
+        <span class="skill-pill">Планирование</span>
+        <span class="skill-pill">Scrum / Kanban</span>
+        <span class="skill-pill">Код-ревью</span>
+        <span class="skill-pill">Наставничество</span>
+        <span class="skill-pill">Собеседования</span>
+      </div>
+    </div>
+
+    <div class="skill-section">
+      <h3><i class="fas fa-brain"></i> Саморазвитие</h3>
+      <div class="ai-block">
+        <i class="fas fa-robot"></i>
+        <span><strong>В свободное время развиваюсь в AI</strong> — изучаю нейросети, промпт-инжиниринг, слежу за трендами в машинном обучении.</span>
+      </div>
+      <div style="margin-top: 1rem;">
+        <span class="hobby-tag"><i class="fas fa-chalkboard-teacher"></i> Преподаю программирование в колледже</span>
+        <span class="hobby-tag"><i class="fas fa-blog"></i> Веду блоги об IT и тестировании</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ВКЛАДКА: БЛОГИ ========== -->
+  <div class="tab-content" id="tab-blogs">
+    <div class="blog-grid">
+      <a href="https://vk.com/tdrill" target="_blank" class="blog-item">
+        <i class="fab fa-vk"></i> vk.com/tdrill — мой основной блог
+      </a>
+      <a href="https://t.me/the_testing" target="_blank" class="blog-item">
+        <i class="fab fa-telegram-plane"></i> t.me/the_testing — канал о тестировании
+      </a>
+      <a href="https://vk.com/leonlab_ai" target="_blank" class="blog-item">
+        <i class="fas fa-microchip"></i> vk.com/leonlab_ai — AI и эксперименты
+      </a>
+    </div>
+    <p style="margin-top: 1.5rem; color: #2a4a6a;">
+      <i class="fas fa-quote-left" style="color: #1f5a8e; opacity: 0.5;"></i>
+      Делюсь опытом, конференциями, лайфхаками и мыслями о мире IT.
+    </p>
+  </div>
+
+  <!-- ========== ВКЛАДКА: КОНТАКТЫ ========== -->
+  <div class="tab-content" id="tab-contacts">
+    <div class="contact-grid">
+      <a href="https://t.me/leonecz" target="_blank" class="contact-item">
+        <i class="fab fa-telegram-plane"></i> <span><span class="label">Telegram:</span> @leonecz</span>
+      </a>
+      <a href="https://vk.com/leonecz" target="_blank" class="contact-item">
+        <i class="fab fa-vk"></i> <span><span class="label">ВКонтакте:</span> vk.com/leonecz</span>
+      </a>
+    </div>
+    <div style="margin-top: 1.8rem; background: #f2f7fc; padding: 1rem 1.8rem; border-radius: 1.5rem;">
+      <i class="fas fa-clock" style="color: #1f5a8e; margin-right: 0.6rem;"></i>
+      Предпочитаемый способ связи — Telegram. Готов к переезду и редким командировкам.
+    </div>
+  </div>
+
 </div>
 
-<main>
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-badge"><i class="fas fa-code"></i> Из буровой — в техлиды</div>
-                    <h1>Алексей Леонов</h1>
-                    <p>Техлид / Automation QA Engineer. Преподаватель. Блогер. Прошёл путь от помощника бурильщика до управления IT-командами. Верю, что никогда не поздно сменить профессию.</p>
-                    <div class="hero-stats">
-                        <div><span class="stat-number">10+</span><br>лет в нефтянке</div>
-                        <div><span class="stat-number">5+</span><br>лет в IT</div>
-                        <div><span class="stat-number">2026</span><br>Техлид</div>
-                    </div>
-                    <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
-                        <a href="#contacts" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Связаться</a>
-                        <a href="#journey" class="btn btn-outline"><i class="fas fa-road"></i> История успеха</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="avatar">
-                        <i class="fas fa-user-astronaut"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ПУТЬ: ИЗ НЕФТЯНКИ В IT -->
-    <section id="journey" style="background-color: #f8fafc;">
-        <div class="container">
-            <h2>Путь сквозь пласты</h2>
-            <div class="section-sub">От Нефтеюганска и буровых вышек — до Java, QA и управления командами</div>
-            <div class="timeline">
-                <div class="timeline-item"><div class="timeline-year">2010-е</div><div><h3>Нефтеюганский колледж, бурение</h3><p>Пошёл по стопам отца, получил специальность "бурение нефтяных и газовых скважин". Начал карьеру помощником бурильщика.</p></div></div>
-                <div class="timeline-item"><div class="timeline-year">2015 → 2020</div><div><h3>Рост в нефтянке</h3><p>Прошёл путь до заместителя начальника службы буровых работ. Глубокое понимание тяжелой промышленности, дисциплины и ответственности.</p></div></div>
-                <div class="timeline-item"><div class="timeline-year">2020 — перелом</div><div><h3>Пандемия и смена вектора</h3><p>Решение кардинально сменить профессию. Начал изучать Java, читать IT-литературу, поступил в онлайн-университет и прошёл отбор в Школу 21 от Сбера.</p></div></div>
-                <div class="timeline-item"><div class="timeline-year">2022</div><div><h3>Первая работа в IT</h3><p>Устроился Automation QA Engineer. Совмещал с преподаванием в колледже — чтобы глубже понять код, начал учить студентов.</p></div></div>
-                <div class="timeline-item"><div class="timeline-year">Январь 2026 — н.в.</div><div><h3>Техлид</h3><p>Дорос до технического лида. Управляю командой, проектирую процессы автоматизации. В планах — переход в менеджмент.</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- КОМПЕТЕНЦИИ И ИНСТРУМЕНТЫ -->
-    <section id="skills">
-        <div class="container">
-            <h2>Технологический стек</h2>
-            <div class="section-sub">За плечами Java, автоматизация, CI/CD и обучение других</div>
-            <div class="skills-grid">
-                <div class="skill-card"><i class="fab fa-java"></i><h3>Java & Automation</h3><p>Разработка автотестов, фреймворки (TestNG, JUnit), Selenium, Rest Assured.</p></div>
-                <div class="skill-card"><i class="fas fa-chalkboard-user"></i><h3>Преподавание</h3><p>Веду занятия в колледже по программированию. Верю: объясняя — укрепляешь знания.</p></div>
-                <div class="skill-card"><i class="fas fa-users"></i><h3>Техлид & менторство</h3><p>Управление QA-командой, code review, наставничество, внедрение лучших практик.</p></div>
-                <div class="skill-card"><i class="fas fa-school"></i><h3>Школа 21 & Сбер</h3><p>Прошёл интенсивное обучение, методология peer-to-peer, углублённый алгоритмический трек.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОГ / ВДОХНОВЕНИЕ -->
-    <section id="blog" style="background-color: #f1f5f9;">
-        <div class="container">
-            <h2>Делюсь опытом в блоге</h2>
-            <div class="section-sub">Конференции, IT-мероприятия, инсайты и лайфхаки для перехода в разработку</div>
-            <div class="interests">
-                <div class="interest-card"><i class="fas fa-microphone-alt fa-2x" style="color:#2563eb;"></i><h3>Выступления</h3><p>Рассказываю о переходе из нефтянки в IT на митапах и конференциях.</p></div>
-                <div class="interest-card"><i class="fas fa-video fa-2x" style="color:#2563eb;"></i><h3>YouTube / Telegram</h3><p>Обзоры технологий, карьерные советы, разбор резюме для джуниоров.</p></div>
-                <div class="interest-card"><i class="fas fa-chalkboard fa-2x" style="color:#2563eb;"></i><h3>Менторство</h3><p>Помогаю начинающим инженерам сделать первый шаг в автоматизацию.</p></div>
-                <div class="interest-card"><i class="fas fa-newspaper fa-2x" style="color:#2563eb;"></i><h3>Статьи на Habr</h3><p>Пишу о нефтянке, IT-трансформации и QA best practices.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ЦИТАТА -->
-    <div class="container">
-        <div class="quote-block">
-            <div class="quote-text" style="font-size: 1.6rem; font-style: italic;">«Когда объясняешь материал другим — начинаешь понимать его по-настоящему. Мой путь доказал: возраст и прошлая профессия — не приговор»</div>
-            <div style="margin-top: 20px;">— Алексей Леонов, техлид и преподаватель</div>
-        </div>
-    </div>
-
-    <!-- КОНТАКТЫ -->
-    <section id="contacts">
-        <div class="container">
-            <h2>Присоединяйтесь к путешествию</h2>
-            <div class="section-sub">Хотите обсудить менторство, коллаборацию или просто поболтать об IT? Напишите!</div>
-            <div class="contact-flex">
-                <div class="contact-info" style="flex:1">
-                    <h3>Контакты</h3>
-                    <div class="contact-detail" style="display: flex; gap: 16px; margin: 24px 0;"><i class="fab fa-vk"></i> <span>vk.com/leonecz</span></div>
-                    <div class="contact-detail"><i class="fab fa-telegram"></i> <span>@leonecz</span></div>
-                    <div class="contact-detail"><i class="fas fa-envelope"></i> <span>leonovae@internet.ru</span></div>
-                    <div class="social-links" style="display: flex; gap: 18px; margin-top: 28px;">
-                        <a href="#" style="background:#eef2ff; width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:60px;"><i class="fab fa-github"></i></a>
-                        <a href="#" style="background:#eef2ff; width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:60px;"><i class="fab fa-youtube"></i></a>
-                        <a href="#" style="background:#eef2ff; width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:60px;"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div style="flex:1">
-                    <h3>Напишите мне</h3>
-                    <form id="contactForm">
-                        <div style="margin-bottom:16px"><input type="text" placeholder="Ваше имя" id="name" style="width:100%; padding:14px; border-radius:60px; border:1px solid #cbd5e1;"></div>
-                        <div style="margin-bottom:16px"><input type="email" placeholder="Email" id="email" style="width:100%; padding:14px; border-radius:60px; border:1px solid #cbd5e1;"></div>
-                        <div style="margin-bottom:16px"><textarea rows="3" placeholder="Сообщение" id="msg" style="width:100%; padding:14px; border-radius:28px; border:1px solid #cbd5e1;"></textarea></div>
-                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Отправить</button>
-                        <p id="formFeedback" style="margin-top:12px; font-size:0.8rem;"></p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <div class="container">
-        <p>© 2026 Алексей Леонов — Из буровой в техлиды. Нефтеюганск — Москва — онлайн</p>
-        <p style="margin-top: 12px; font-size: 0.8rem;">Сайт создан на основе реальной истории перехода в IT. Каждый может изменить свою жизнь.</p>
-    </div>
-</footer>
-
 <script>
-    document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name')?.value.trim();
-        const email = document.getElementById('email')?.value.trim();
-        const msg = document.getElementById('msg')?.value.trim();
-        const feedback = document.getElementById('formFeedback');
-        if (!name || !email || !msg) {
-            feedback.innerHTML = '❌ Заполните все поля';
-            feedback.style.color = '#b91c1c';
-        } else if (!email.includes('@')) {
-            feedback.innerHTML = '❌ Введите корректный email';
-        } else {
-            feedback.innerHTML = '✅ Спасибо! Алексей свяжется с вами.';
-            feedback.style.color = '#166534';
-            this.reset();
-        }
-        setTimeout(() => feedback.innerHTML = '', 3000);
+  (function() {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = {
+      home: document.getElementById('tab-home'),
+      path: document.getElementById('tab-path'),
+      skills: document.getElementById('tab-skills'),
+      blogs: document.getElementById('tab-blogs'),
+      contacts: document.getElementById('tab-contacts')
+    };
+
+    function activateTab(tabId) {
+      Object.values(contents).forEach(el => el.classList.remove('active'));
+      tabs.forEach(btn => btn.classList.remove('active'));
+
+      if (contents[tabId]) contents[tabId].classList.add('active');
+      tabs.forEach(btn => {
+        if (btn.dataset.tab === tabId) btn.classList.add('active');
+      });
+    }
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const tabId = this.dataset.tab;
+        if (tabId) activateTab(tabId);
+      });
     });
-    // плавный скролл
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
+
+    const hash = window.location.hash.replace('#', '');
+    if (hash && contents[hash]) {
+      activateTab(hash);
+    }
+  })();
 </script>
+
 </body>
 </html>
